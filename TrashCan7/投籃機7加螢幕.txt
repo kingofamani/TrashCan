@@ -1,11 +1,12 @@
-使用EEPROM，可儲存投籃最高紀錄至UNO板。
-若程式重新燒錄上傳，EEPROM會歸零。
+LCM1602螢幕
 
+LiquidCrystal_I2C (by Frank de Brabander)程式庫
+積木：顯示模組/液晶顯示
 
-如何儲存資料：
-開啟25EEPROM2，右鍵/暫存積木：
-	#include <EEPROM.h>
-	writeToMemory
-	ReadFromMemory
-	clearData
-開啟TrashCan5，從暫存積木拉出。
+GND	GND
+VCC	5V
+SDA	A4
+SCL	A5
+
+0行就是第1行；0列就是第1列。
+直行橫列。
