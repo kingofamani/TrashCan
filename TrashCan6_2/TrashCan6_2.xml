@@ -1,6 +1,12 @@
 <xml xmlns="https://developers.google.com/blockly/xml">
   <variables>
+    <variable id="$u/^/-1*0#MGbx%oeB2X">countDownSec</variable>
+    <variable id="L),mz=pFyXgfX`OK!;8p">inteval</variable>
     <variable id="qpK?A^Lk$~,Ug@Zp.kn%">count</variable>
+    <variable id="S{*8^Be#(;Fj#L]/.SBE">beforeFlagSec</variable>
+    <variable id="KX2C*VWeO3P48iXErPE{">s</variable>
+    <variable id="Tf{]0I#RQVSYR.#ZVW9N">rest</variable>
+    <variable id="zv9_Ig.,T5+dBqpX4DQ_">startTime</variable>
   </variables>
   <block type="procedures_defnoreturn" id="it!OF.M3`i7kyKNIX7hJ" collapsed="true" x="530" y="70">
     <field name="NAME">openAndClose</field>
@@ -133,6 +139,18 @@
                             <field name="NUM">0</field>
                           </shadow>
                         </value>
+                        <next>
+                          <block type="variables_set" id="F/$iWaKA7C#8M.PX8,13">
+                            <field name="POSITION">global</field>
+                            <field name="TYPE">int</field>
+                            <field name="VAR" id="KX2C*VWeO3P48iXErPE{">s</field>
+                            <value name="VALUE">
+                              <shadow type="math_number" id="4@d7o.*nBteG7IC:9K_+">
+                                <field name="NUM">0</field>
+                              </shadow>
+                            </value>
+                          </block>
+                        </next>
                       </block>
                     </next>
                   </block>
@@ -156,12 +174,12 @@
                     <field name="MEASUREMENT">CM</field>
                     <value name="TRIG">
                       <block type="math_number" id="u5qD5NOiw/f}6d=%]L#F">
-                        <field name="NUM">8</field>
+                        <field name="NUM">5</field>
                       </block>
                     </value>
                     <value name="ECHO">
                       <block type="math_number" id="{W#+IypR~C+UZQxWW1`_">
-                        <field name="NUM">9</field>
+                        <field name="NUM">6</field>
                       </block>
                     </value>
                   </block>
@@ -259,13 +277,87 @@
                                   </block>
                                 </value>
                                 <next>
-                                  <block type="procedures_callnoreturn" id="8b29b7lUuiO_{]|]$Fg:">
-                                    <mutation xmlns="http://www.w3.org/1999/xhtml" name="open"></mutation>
-                                    <value name="VAR">
-                                      <shadow type="lists_create_with" id="LEtD|qrw|c98[TR:,T-#">
-                                        <mutation items="0"></mutation>
+                                  <block type="variables_set3" id="o*99rD#_w9]E#X3]n*dE">
+                                    <field name="VAR" id="KX2C*VWeO3P48iXErPE{">s</field>
+                                    <value name="DELTA">
+                                      <shadow type="math_number">
+                                        <field name="NUM">0</field>
                                       </shadow>
+                                      <block type="procedures_callreturn" id=",khM)S(iM,Jmn+dVZSdK">
+                                        <mutation xmlns="http://www.w3.org/1999/xhtml" name="timer"></mutation>
+                                        <value name="VAR">
+                                          <block type="lists_create_with" id="3rW=~@CYrfCT7,,Ks5zv">
+                                            <mutation items="1"></mutation>
+                                            <value name="ADD0">
+                                              <block type="math_number" id="kvq5MxaEN8yejsEHYufi">
+                                                <field name="NUM">10</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                      </block>
                                     </value>
+                                    <next>
+                                      <block type="controls_if" id="v$EYiz,W[p[/5N(I5#i*">
+                                        <value name="IF0">
+                                          <block type="logic_compare" id="ABssWe0ze0g!:5UfRr~X">
+                                            <field name="OP">EQ</field>
+                                            <value name="A">
+                                              <block type="variables_get" id="mUxciP;7aD,jrMLIJPo/">
+                                                <field name="VAR" id="KX2C*VWeO3P48iXErPE{">s</field>
+                                              </block>
+                                            </value>
+                                            <value name="B">
+                                              <block type="math_number" id="dUwu!hF[q,X+NFufT_Dt">
+                                                <field name="NUM">0</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <statement name="DO0">
+                                          <block type="serial_println" id="=qa2MXcb*PaT|~SFPN;D">
+                                            <value name="CONTENT">
+                                              <block type="text" id="Kr}w.GD[y%DRgjtO@-yL">
+                                                <field name="TEXT">結束</field>
+                                              </block>
+                                            </value>
+                                            <next>
+                                              <block type="variables_set3" id="M:DrRdhp74}PM)aEq:L2">
+                                                <field name="VAR" id="KX2C*VWeO3P48iXErPE{">s</field>
+                                                <value name="DELTA">
+                                                  <shadow type="math_number">
+                                                    <field name="NUM">0</field>
+                                                  </shadow>
+                                                  <block type="procedures_callreturn" id="Gk-Ln`hbalt/3E5WvG1Z">
+                                                    <mutation xmlns="http://www.w3.org/1999/xhtml" name="timer"></mutation>
+                                                    <value name="VAR">
+                                                      <block type="lists_create_with" id="l4)*~.*7=!M|dDiay2]N">
+                                                        <mutation items="1"></mutation>
+                                                        <value name="ADD0">
+                                                          <block type="math_number" id="T@evA{NQh/hD_HWxD-Gp">
+                                                            <field name="NUM">0</field>
+                                                          </block>
+                                                        </value>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </statement>
+                                        <next>
+                                          <block type="procedures_callnoreturn" id="8b29b7lUuiO_{]|]$Fg:">
+                                            <mutation xmlns="http://www.w3.org/1999/xhtml" name="open"></mutation>
+                                            <value name="VAR">
+                                              <shadow type="lists_create_with" id="LEtD|qrw|c98[TR:,T-#">
+                                                <mutation items="0"></mutation>
+                                              </shadow>
+                                            </value>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
                                   </block>
                                 </next>
                               </block>
@@ -382,6 +474,185 @@
                 <field name="NUM">1000</field>
               </block>
             </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defreturn" id=":;?h#GL9C1^M2*9n+xb$" collapsed="true" x="970" y="490">
+    <field name="TYPE">int</field>
+    <field name="NAME">timer</field>
+    <value name="VAR">
+      <shadow type="lists_create_with">
+        <mutation items="0"></mutation>
+      </shadow>
+      <block type="lists_create_with" id="$D#Xye(S!)AIh!AL,)X7">
+        <mutation items="1"></mutation>
+        <value name="ADD0">
+          <block type="variables_set2" id="Did3jKX^xvKFr^dh?@oB">
+            <field name="TYPE">int</field>
+            <field name="VAR" id="$u/^/-1*0#MGbx%oeB2X">countDownSec</field>
+          </block>
+        </value>
+      </block>
+    </value>
+    <statement name="STACK">
+      <block type="customcode_variable" id="ZH)C1MNC3O=d3:o75F]h">
+        <value name="variable">
+          <block type="text" id="1|Fh0uOizyN,kH]W[^$A">
+            <field name="TEXT">static unsigned long startTime</field>
+          </block>
+        </value>
+        <value name="text">
+          <block type="text" id="Q4YM?zv~Na`VvOV=q|^G">
+            <field name="TEXT">millis()</field>
+          </block>
+        </value>
+        <next>
+          <block type="customcode_variable" id="4U-om(E^X/6kg|fpm0pH">
+            <value name="variable">
+              <block type="text" id="K[CK0_b`$,8/yT]`smWZ">
+                <field name="TEXT">static unsigned long beforeFlagSec</field>
+              </block>
+            </value>
+            <value name="text">
+              <block type="text" id="CN,3=*6Z*k-kEk!|sX_=">
+                <field name="TEXT">millis()</field>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="}$bY4#y[9thqo;CRSkT?">
+                <field name="POSITION">local</field>
+                <field name="TYPE">int</field>
+                <field name="VAR" id="L),mz=pFyXgfX`OK!;8p">inteval</field>
+                <value name="VALUE">
+                  <shadow type="math_number" id="S%hCa,k5#%X+6hb+E5RA">
+                    <field name="NUM">1000</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="controls_if" id="]HXO%gteD,}RMw96JrE%">
+                    <value name="IF0">
+                      <block type="logic_compare" id="0),hAEjX0I|0!kUIVNIY">
+                        <field name="OP">GT</field>
+                        <value name="A">
+                          <block type="millis" id="l/AkGWc@[kiRDaF=R]dy"></block>
+                        </value>
+                        <value name="B">
+                          <block type="math_arithmetic" id="N:.8{wN]4)d7B)]l#:NA">
+                            <field name="OP">ADD</field>
+                            <value name="A">
+                              <block type="variables_get" id="_foWva/]SF`Rm}kZ+$]z">
+                                <field name="VAR" id="S{*8^Be#(;Fj#L]/.SBE">beforeFlagSec</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="variables_get" id="-W;h-WiQ5d?Q}e@K.3?^">
+                                <field name="VAR" id="L),mz=pFyXgfX`OK!;8p">inteval</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="variables_set3" id="zS_tru/8n^qmu7K_n6:D">
+                        <field name="VAR" id="S{*8^Be#(;Fj#L]/.SBE">beforeFlagSec</field>
+                        <value name="DELTA">
+                          <shadow type="math_number">
+                            <field name="NUM">0</field>
+                          </shadow>
+                          <block type="millis" id="S}_Cw@ll+^hCZ2u$}4Io"></block>
+                        </value>
+                        <next>
+                          <block type="variables_set" id="?Qx6T7T@16+9Lz+7u|]z">
+                            <field name="POSITION">local</field>
+                            <field name="TYPE">int</field>
+                            <field name="VAR" id="Tf{]0I#RQVSYR.#ZVW9N">rest</field>
+                            <value name="VALUE">
+                              <shadow type="math_number">
+                                <field name="NUM">1000</field>
+                              </shadow>
+                              <block type="math_arithmetic" id="I%pCS!nM`28xBfg1`5$V">
+                                <field name="OP">MINUS</field>
+                                <value name="A">
+                                  <block type="variables_get" id="9-[[=Ujf+VYgcW|LCJ$A">
+                                    <field name="VAR" id="$u/^/-1*0#MGbx%oeB2X">countDownSec</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_arithmetic" id="fLbNNA}RHq|IaFt^1*?d">
+                                    <field name="OP">DIVIDE</field>
+                                    <value name="A">
+                                      <block type="math_arithmetic" id="gjil5o,)KR}Oa/V~qgqa">
+                                        <field name="OP">ADD</field>
+                                        <value name="A">
+                                          <block type="millis" id="e#j2FC});e0cCjp@Gf8["></block>
+                                        </value>
+                                        <value name="B">
+                                          <block type="variables_get" id="jtvX}Y?^?,)zW7IDkpp[">
+                                            <field name="VAR" id="zv9_Ig.,T5+dBqpX4DQ_">startTime</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <value name="B">
+                                      <block type="math_number" id="rH-a(?8(lE{l-O?WLro]">
+                                        <field name="NUM">1000</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="controls_if" id="BP[oOx(R!TGU1r/DM=I!">
+                                <value name="IF0">
+                                  <block type="logic_compare" id="Vp-#Kyh$zt3#0wf2^Gh}">
+                                    <field name="OP">GTE</field>
+                                    <value name="A">
+                                      <block type="variables_get" id=".fjo;7A48)*m~9-tTua(">
+                                        <field name="VAR" id="Tf{]0I#RQVSYR.#ZVW9N">rest</field>
+                                      </block>
+                                    </value>
+                                    <value name="B">
+                                      <block type="math_number" id="3*^dLrF+%(Ct4fp7etd7">
+                                        <field name="NUM">0</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <statement name="DO0">
+                                  <block type="serial_println" id=";SOC[,k3}:z.NnA}SB~Z">
+                                    <value name="CONTENT">
+                                      <block type="variables_get" id="`O92Via)r|x]tMsuGnq~">
+                                        <field name="VAR" id="Tf{]0I#RQVSYR.#ZVW9N">rest</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="procedures_return" id=";hch!!DA7njUwSmi.P;L">
+                                        <value name="RETURN">
+                                          <shadow type="math_number">
+                                            <field name="NUM">0</field>
+                                          </shadow>
+                                          <block type="variables_get" id="s2?JX7x?!4cIpEs!ssL:">
+                                            <field name="VAR" id="Tf{]0I#RQVSYR.#ZVW9N">rest</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </statement>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </next>
           </block>
         </next>
       </block>
