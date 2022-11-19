@@ -66,12 +66,12 @@
                     <field name="MEASUREMENT">CM</field>
                     <value name="TRIG">
                       <block type="math_number" id="u5qD5NOiw/f}6d=%]L#F">
-                        <field name="NUM">8</field>
+                        <field name="NUM">5</field>
                       </block>
                     </value>
                     <value name="ECHO">
                       <block type="math_number" id="{W#+IypR~C+UZQxWW1`_">
-                        <field name="NUM">9</field>
+                        <field name="NUM">6</field>
                       </block>
                     </value>
                   </block>

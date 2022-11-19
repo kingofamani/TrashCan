@@ -3,7 +3,7 @@
  *
  * https://github.com/MediaTek-Labs/BlocklyDuino-for-LinkIt
  *
- * Date: Sat, 19 Nov 2022 03:23:56 GMT
+ * Date: Sat, 19 Nov 2022 07:57:55 GMT
  */
 /*  部份程式由吉哥積木產生  */
 /*  https://sites.google.com/jes.mlc.edu.tw/ljj/linkit7697  */
@@ -16,7 +16,7 @@ decode_results results;
 Servo __myservo3;
 int count = 0;
 
-Ultrasonic ultrasonic_8_9(8, 9);
+Ultrasonic ultrasonic_5_6(5, 6);
 
 void open() {
   __myservo3.write(80);
@@ -41,7 +41,7 @@ void setup()
 
 void loop()
 {
-  if (ultrasonic_8_9.convert(ultrasonic_8_9.timing(), Ultrasonic::CM) <= 7) {
+  if (ultrasonic_5_6.convert(ultrasonic_5_6.timing(), Ultrasonic::CM) <= 7) {
     count = count + 1;
     Serial.println(count);
     delay(35);

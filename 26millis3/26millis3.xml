@@ -34,7 +34,7 @@
                 <field name="NUM">0</field>
               </shadow>
               <block type="math_number" id="Yrkt6%=-uuIyrHS*ty?]">
-                <field name="NUM">5</field>
+                <field name="NUM">10</field>
               </block>
             </value>
             <next>

@@ -3,10 +3,11 @@
  *
  * https://github.com/MediaTek-Labs/BlocklyDuino-for-LinkIt
  *
- * Date: Sat, 19 Nov 2022 08:25:11 GMT
+ * Date: Sat, 19 Nov 2022 08:56:58 GMT
  */
 /*  部份程式由吉哥積木產生  */
 /*  https://sites.google.com/jes.mlc.edu.tw/ljj/linkit7697  */
+#include <EEPROM.h>
 #include <SimpleTimer.h>
 #include <IRremote.h>
 #include <Servo.h>
@@ -26,6 +27,18 @@ int secs = 10;
 boolean isTimeOut = false;
 
 Ultrasonic ultrasonic_5_6(5, 6);
+
+void writeToMemory(int addr, int val) {
+  EEPROM.write(addr, val);
+}
+
+int ReadFromMemory(int addr) {
+  return (EEPROM.read(addr));
+}
+
+void clearOneMemory(int addr) {
+  EEPROM.write(addr, 0);
+}
 
 void open() {
   __myservo3.write(80);
@@ -52,6 +65,20 @@ void printSec() {
   }
 }
 
+void writeScore() {
+  lcd_i2c.clear();
+  if (count > (ReadFromMemory(1))) {
+    writeToMemory(1, count);
+    lcd_i2c.setCursor(0,0);
+    lcd_i2c.print("congratulation");
+    lcd_i2c.setCursor(0,1);
+    lcd_i2c.print((String("New Rec:")+String(count)));
+  } else {
+    lcd_i2c.setCursor(0,0);
+    lcd_i2c.print("Fail");
+  }
+}
+
 void setup()
 {
   Serial.begin(9600);
@@ -62,6 +89,8 @@ void setup()
   __myservo3.write(0);
   delay(1000);
   lcd_i2c.backlight();
+  lcd_i2c.setCursor(0,0);
+  lcd_i2c.print((String("Max Record:")+String(ReadFromMemory(1))));
 }
 
 
@@ -83,17 +112,19 @@ void loop()
       lcd_i2c.print("START");
       //開始計時
       countDown(secs);
+    } else if (String(results.value, HEX) == "ff30cf") {
+      //按4
+      lcd_i2c.clear();
+      lcd_i2c.setCursor(0,0);
+      lcd_i2c.print("Clear");
+      clearOneMemory(1);
     }
 
     irrecv.resume();
   }
   //結束計時
   if (isTimeOut) {
-    lcd_i2c.clear();
-    lcd_i2c.setCursor(0,0);
-    lcd_i2c.print("Game Over");
-    lcd_i2c.setCursor(0,1);
-    lcd_i2c.print((String("Your score:")+String(count)));
+    writeScore();
     isTimeOut = false;
     count = 0;
     close();

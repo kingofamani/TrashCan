@@ -1,22 +1,33 @@
 <xml xmlns="https://developers.google.com/blockly/xml">
   <variables>
+    <variable id="y/M[+m5kPvRo}l6rE[BQ">addr</variable>
+    <variable id="uV|u6DZH^3~~A/WL~*v)">val</variable>
     <variable id="KX2C*VWeO3P48iXErPE{">secs</variable>
     <variable id="qpK?A^Lk$~,Ug@Zp.kn%">count</variable>
     <variable id="63ObcJ$iB1b_e93P4Ip+">isTimeOut</variable>
   </variables>
-  <block type="customcode_head" id="lEufOHs!8V,-nAXz2C^y" x="90" y="10">
+  <block type="customcode_head" id="v-=QeAp8y6X$zj_1!NZk" x="90" y="-30">
     <value name="text">
-      <block type="text" id="A#uREk0uuT!7%vkg3egb">
-        <field name="TEXT">#include &lt;SimpleTimer.h&gt;</field>
+      <block type="text" id="B,p=,/@.|(U$q*Kc0d$$">
+        <field name="TEXT">#include &lt;EEPROM.h&gt;</field>
       </block>
     </value>
     <next>
-      <block type="customcode_head" id="-7!-!,lB@DPe*iy_9%%?">
+      <block type="customcode_head" id="lEufOHs!8V,-nAXz2C^y">
         <value name="text">
-          <block type="text" id="6h3*d66uazQvlPcuzzWA">
-            <field name="TEXT">SimpleTimer timer;</field>
+          <block type="text" id="A#uREk0uuT!7%vkg3egb">
+            <field name="TEXT">#include &lt;SimpleTimer.h&gt;</field>
           </block>
         </value>
+        <next>
+          <block type="customcode_head" id="-7!-!,lB@DPe*iy_9%%?">
+            <value name="text">
+              <block type="text" id="6h3*d66uazQvlPcuzzWA">
+                <field name="TEXT">SimpleTimer timer;</field>
+              </block>
+            </value>
+          </block>
+        </next>
       </block>
     </next>
   </block>
@@ -95,6 +106,49 @@
                                     <next>
                                       <block type="lcd_i2c_light" id="_fk5gLbk?uc7)4!lY6yD">
                                         <field name="BACKLIGHT_STATE">ON</field>
+                                        <next>
+                                          <block type="lcd_i2c_set_cursor" id="s/1Jx9KiX_{Kij$Sb3cn">
+                                            <value name="COL">
+                                              <block type="math_number" id="^}58}{bIX2ARZQ;4r^*%">
+                                                <field name="NUM">0</field>
+                                              </block>
+                                            </value>
+                                            <value name="ROW">
+                                              <block type="math_number" id="s_@qcn_]UzABHy4ges8%">
+                                                <field name="NUM">0</field>
+                                              </block>
+                                            </value>
+                                            <next>
+                                              <block type="lcd_i2c_put" id="6^YMO$,R;,?5lECP^~@.">
+                                                <value name="VALUE">
+                                                  <block type="text_join" id="Ihw,Z9NNKM6L;UXb^3om">
+                                                    <mutation items="2"></mutation>
+                                                    <value name="ADD0">
+                                                      <block type="text" id="EpwCRI^;jBs}$rP8F#,R">
+                                                        <field name="TEXT">Max Record:</field>
+                                                      </block>
+                                                    </value>
+                                                    <value name="ADD1">
+                                                      <block type="procedures_callreturn" id="*~t^E2EaWD4O(AFtjgpS">
+                                                        <mutation xmlns="http://www.w3.org/1999/xhtml" name="ReadFromMemory"></mutation>
+                                                        <value name="VAR">
+                                                          <block type="lists_create_with" id="iij)V{;s6e(Nn-A|i~Vk">
+                                                            <mutation items="1"></mutation>
+                                                            <value name="ADD0">
+                                                              <block type="math_number" id="So!qYO$!=kKf.EpJS5Xo">
+                                                                <field name="NUM">1</field>
+                                                              </block>
+                                                            </value>
+                                                          </block>
+                                                        </value>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
                                       </block>
                                     </next>
                                   </block>
@@ -200,6 +254,7 @@
                   <block type="webbit_mooncar_ir_remote_read" id="9lXHHLFc^_PkXrT?I|RB">
                     <statement name="IR_READ">
                       <block type="controls_if" id="FepO8[%W%kMT,_6zd/sU">
+                        <mutation elseif="1"></mutation>
                         <value name="IF0">
                           <block type="logic_compare" id="RyD7wNDxD.k?3!aRD9q0">
                             <field name="OP">EQ</field>
@@ -283,6 +338,70 @@
                             </next>
                           </block>
                         </statement>
+                        <value name="IF1">
+                          <block type="logic_compare" id="H9If9~EjfmLk-,jD/OSA">
+                            <field name="OP">EQ</field>
+                            <value name="A">
+                              <block type="webbit_mooncar_ir_remote_read_value" id="oB{IH4_rl4c~Az3b,mP1"></block>
+                            </value>
+                            <value name="B">
+                              <block type="text" id="OOKW;XmovJa5zvRErDMc">
+                                <field name="TEXT">ff30cf</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO1">
+                          <block type="customcode_comment" id="/[^(24Doav4pQ]_!^00!">
+                            <value name="text">
+                              <block type="text" id="A7POaG7x{_UjwoS_oWev">
+                                <field name="TEXT">按4</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="lcd_i2c_clear" id="o@VJN1h)+dbG,SNR|xUY">
+                                <next>
+                                  <block type="lcd_i2c_set_cursor" id="DmPp-lpx)Rkuz@f}D59G">
+                                    <value name="COL">
+                                      <block type="math_number" id="/#s8f[*_eQNqK$L/yMaM">
+                                        <field name="NUM">0</field>
+                                      </block>
+                                    </value>
+                                    <value name="ROW">
+                                      <block type="math_number" id="jDbCv@6J?k-*3fTa_iSI">
+                                        <field name="NUM">0</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="lcd_i2c_put" id="E8.#Qd5C9JDbKegd+1fM">
+                                        <value name="VALUE">
+                                          <block type="text" id="Ul0A2KrAS|7m?oX@?jyK">
+                                            <field name="TEXT">Clear</field>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="procedures_callnoreturn" id="6m-;[TNc[:$k=@FSog;v">
+                                            <mutation xmlns="http://www.w3.org/1999/xhtml" name="clearOneMemory"></mutation>
+                                            <value name="VAR">
+                                              <block type="lists_create_with" id="-Gi4mYgZlfA?c0DNdYCT">
+                                                <mutation items="1"></mutation>
+                                                <value name="ADD0">
+                                                  <block type="math_number" id="PJGW{p[k6Nsj}Gny_8DC">
+                                                    <field name="NUM">1</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </statement>
                       </block>
                     </statement>
                     <next>
@@ -300,90 +419,40 @@
                               </block>
                             </value>
                             <statement name="DO0">
-                              <block type="lcd_i2c_clear" id=")Lmb;Hi6E1;xqFZ0.p[:">
+                              <block type="procedures_callnoreturn" id="[Yc[on/f`ZVTl+^zANy0">
+                                <mutation xmlns="http://www.w3.org/1999/xhtml" name="writeScore"></mutation>
+                                <value name="VAR">
+                                  <shadow type="lists_create_with" id="U^ARkIM4|H?]t{dJs[}p">
+                                    <mutation items="0"></mutation>
+                                  </shadow>
+                                </value>
                                 <next>
-                                  <block type="lcd_i2c_set_cursor" id="Ak#}Rn)0(4[Zj!.`[@t!">
-                                    <value name="COL">
-                                      <block type="math_number" id="Zfk68C*`DR.DafZt[6$~">
+                                  <block type="variables_set3" id="i|O3|+Px]/cmejk6X54M">
+                                    <field name="VAR" id="63ObcJ$iB1b_e93P4Ip+">isTimeOut</field>
+                                    <value name="DELTA">
+                                      <shadow type="math_number">
                                         <field name="NUM">0</field>
-                                      </block>
-                                    </value>
-                                    <value name="ROW">
-                                      <block type="math_number" id="$o%Vg*1*3ng8XONj=~bT">
-                                        <field name="NUM">0</field>
+                                      </shadow>
+                                      <block type="logic_boolean" id="D+mV*MY|Sv]n,b[[lcMj">
+                                        <field name="BOOL">FALSE</field>
                                       </block>
                                     </value>
                                     <next>
-                                      <block type="lcd_i2c_put" id="$E2yS-A]EPrP{-`m^2/%">
-                                        <value name="VALUE">
-                                          <block type="text" id="~l}m/G]Z;vK|R.n:rlSg">
-                                            <field name="TEXT">Game Over</field>
-                                          </block>
+                                      <block type="variables_set3" id="TN~*357nZk^.$H5O%M?D">
+                                        <field name="VAR" id="qpK?A^Lk$~,Ug@Zp.kn%">count</field>
+                                        <value name="DELTA">
+                                          <shadow type="math_number" id="];eI,`r?*$w=Mw:/2pv7">
+                                            <field name="NUM">0</field>
+                                          </shadow>
                                         </value>
                                         <next>
-                                          <block type="lcd_i2c_set_cursor" id="[Gyv{jBt3;`l@@[,c!0F">
-                                            <value name="COL">
-                                              <block type="math_number" id="*+GuhH|d~~#AI3:/^Qsm">
-                                                <field name="NUM">0</field>
-                                              </block>
+                                          <block type="procedures_callnoreturn" id="FYxN69om-`xp8cx/tez9">
+                                            <mutation xmlns="http://www.w3.org/1999/xhtml" name="close"></mutation>
+                                            <value name="VAR">
+                                              <shadow type="lists_create_with" id="I;J`zD[[]g95],v+Ye#O">
+                                                <mutation items="0"></mutation>
+                                              </shadow>
                                             </value>
-                                            <value name="ROW">
-                                              <block type="math_number" id="7-j1ys/vENsi0Cn;.*xE">
-                                                <field name="NUM">1</field>
-                                              </block>
-                                            </value>
-                                            <next>
-                                              <block type="lcd_i2c_put" id="5~I5nt%nE1UXk+),0bGg">
-                                                <value name="VALUE">
-                                                  <block type="text_join" id="p{lg#Q`l`NI$vRlA^Fy/">
-                                                    <mutation items="2"></mutation>
-                                                    <value name="ADD0">
-                                                      <block type="text" id="EccK~GW9bFR;3ntUfaao">
-                                                        <field name="TEXT">Your score:</field>
-                                                      </block>
-                                                    </value>
-                                                    <value name="ADD1">
-                                                      <block type="variables_get" id="=sU$orZA)|E}e.,n=raf">
-                                                        <field name="VAR" id="qpK?A^Lk$~,Ug@Zp.kn%">count</field>
-                                                      </block>
-                                                    </value>
-                                                  </block>
-                                                </value>
-                                                <next>
-                                                  <block type="variables_set3" id="i|O3|+Px]/cmejk6X54M">
-                                                    <field name="VAR" id="63ObcJ$iB1b_e93P4Ip+">isTimeOut</field>
-                                                    <value name="DELTA">
-                                                      <shadow type="math_number">
-                                                        <field name="NUM">0</field>
-                                                      </shadow>
-                                                      <block type="logic_boolean" id="D+mV*MY|Sv]n,b[[lcMj">
-                                                        <field name="BOOL">FALSE</field>
-                                                      </block>
-                                                    </value>
-                                                    <next>
-                                                      <block type="variables_set3" id="TN~*357nZk^.$H5O%M?D">
-                                                        <field name="VAR" id="qpK?A^Lk$~,Ug@Zp.kn%">count</field>
-                                                        <value name="DELTA">
-                                                          <shadow type="math_number" id="];eI,`r?*$w=Mw:/2pv7">
-                                                            <field name="NUM">0</field>
-                                                          </shadow>
-                                                        </value>
-                                                        <next>
-                                                          <block type="procedures_callnoreturn" id="FYxN69om-`xp8cx/tez9">
-                                                            <mutation xmlns="http://www.w3.org/1999/xhtml" name="close"></mutation>
-                                                            <value name="VAR">
-                                                              <shadow type="lists_create_with" id="I;J`zD[[]g95],v+Ye#O">
-                                                                <mutation items="0"></mutation>
-                                                              </shadow>
-                                                            </value>
-                                                          </block>
-                                                        </next>
-                                                      </block>
-                                                    </next>
-                                                  </block>
-                                                </next>
-                                              </block>
-                                            </next>
                                           </block>
                                         </next>
                                       </block>
@@ -404,6 +473,98 @@
         </statement>
       </block>
     </next>
+  </block>
+  <block type="procedures_defnoreturn" id=":^4M~=Ax#(d:.D?(om%r" collapsed="true" x="1050" y="450">
+    <field name="NAME">writeToMemory</field>
+    <value name="VAR">
+      <shadow type="lists_create_with">
+        <mutation items="0"></mutation>
+      </shadow>
+      <block type="lists_create_with" id="N[58I6CXlH}Bb?Sl08%h">
+        <mutation items="2"></mutation>
+        <value name="ADD0">
+          <block type="variables_set2" id="CKipt:)=6Bk?}x3Dq5oz">
+            <field name="TYPE">int</field>
+            <field name="VAR" id="y/M[+m5kPvRo}l6rE[BQ">addr</field>
+          </block>
+        </value>
+        <value name="ADD1">
+          <block type="variables_set2" id="i[I=yq[$FmU/FbQamfT9">
+            <field name="TYPE">int</field>
+            <field name="VAR" id="uV|u6DZH^3~~A/WL~*v)">val</field>
+          </block>
+        </value>
+      </block>
+    </value>
+    <statement name="STACK">
+      <block type="customcode_code" id="Y_-u6A3M@Uld13Tt-x$P">
+        <value name="text">
+          <block type="text" id="R.Gj0PkF~@ER*vEwe](]">
+            <field name="TEXT">EEPROM.write(addr, val);</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defreturn" id="1.0.PZm2Gal|d9aRa}O|" collapsed="true" x="1050" y="490">
+    <field name="TYPE">int</field>
+    <field name="NAME">ReadFromMemory</field>
+    <value name="VAR">
+      <shadow type="lists_create_with">
+        <mutation items="0"></mutation>
+      </shadow>
+      <block type="lists_create_with" id="LJO?EA0Qv/^5@njn_Hvi">
+        <mutation items="1"></mutation>
+        <value name="ADD0">
+          <block type="variables_set2" id="-9XimYFaVh!uP){};[LR">
+            <field name="TYPE">int</field>
+            <field name="VAR" id="y/M[+m5kPvRo}l6rE[BQ">addr</field>
+          </block>
+        </value>
+      </block>
+    </value>
+    <statement name="STACK">
+      <block type="procedures_return" id="CTegslCuMUTB4JWyoq]4">
+        <value name="RETURN">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+          <block type="customcode_code_input" id="277EQ{H1Q5}_po5MN%eT">
+            <value name="text">
+              <block type="text" id="cf=0+?K|PK@HWx1kLtVE">
+                <field name="TEXT">EEPROM.read(addr)</field>
+              </block>
+            </value>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="9lcdh|Tki~*Q@4!Oig[V" collapsed="true" x="1050" y="530">
+    <field name="NAME">clearOneMemory</field>
+    <value name="VAR">
+      <shadow type="lists_create_with">
+        <mutation items="0"></mutation>
+      </shadow>
+      <block type="lists_create_with" id="_dqAj(e[:)U(/+%eD!TN">
+        <mutation items="1"></mutation>
+        <value name="ADD0">
+          <block type="variables_set2" id="5vLU^zq^+F)UM@glr*O}">
+            <field name="TYPE">int</field>
+            <field name="VAR" id="y/M[+m5kPvRo}l6rE[BQ">addr</field>
+          </block>
+        </value>
+      </block>
+    </value>
+    <statement name="STACK">
+      <block type="customcode_code" id="Vi)xHV7HrIB0_|@wQpdK">
+        <value name="text">
+          <block type="text" id="0hTTXl6!mj/P;|MCV5TY">
+            <field name="TEXT">EEPROM.write(addr, 0);</field>
+          </block>
+        </value>
+      </block>
+    </statement>
   </block>
   <block type="procedures_defnoreturn" id="j/R8YdhhEjvvWWqUzd77" collapsed="true" x="1030" y="650">
     <field name="NAME">open</field>
@@ -611,6 +772,147 @@
                 </next>
               </block>
             </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="Yrd.usLu%gwzd@w#G=%Z" x="830" y="1210">
+    <field name="NAME">writeScore</field>
+    <value name="VAR">
+      <shadow type="lists_create_with" id="0-|hQf6fCkw90YI%#SrO">
+        <mutation items="0"></mutation>
+      </shadow>
+    </value>
+    <statement name="STACK">
+      <block type="lcd_i2c_clear" id="|%XBFS5]*`]O/QIZE_!!">
+        <next>
+          <block type="controls_if" id="?EwrEVFZw4py{c8n7kr^">
+            <mutation else="1"></mutation>
+            <value name="IF0">
+              <block type="logic_compare" id="]rYuY,Z(tb#X6$M2XYSu">
+                <field name="OP">GT</field>
+                <value name="A">
+                  <block type="variables_get" id="G$?BK6/;e7S=UF#RDe%0">
+                    <field name="VAR" id="qpK?A^Lk$~,Ug@Zp.kn%">count</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="procedures_callreturn" id="1x|@12-cj?SfA5!WAbG]">
+                    <mutation xmlns="http://www.w3.org/1999/xhtml" name="ReadFromMemory"></mutation>
+                    <value name="VAR">
+                      <block type="lists_create_with" id="GnU0aYhF`~UsO5wr[Lu=">
+                        <mutation items="1"></mutation>
+                        <value name="ADD0">
+                          <block type="math_number" id="*RI-Un$5|mpOS|=~RWv?">
+                            <field name="NUM">1</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="procedures_callnoreturn" id="s=)IvFapIC)@R_(Ic{bT">
+                <mutation xmlns="http://www.w3.org/1999/xhtml" name="writeToMemory"></mutation>
+                <value name="VAR">
+                  <block type="lists_create_with" id="-w?`}DWo`y?B`vPsV}cO">
+                    <mutation items="2"></mutation>
+                    <value name="ADD0">
+                      <block type="math_number" id="Bp@K}An:}oTR$tUnCoL]">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                    <value name="ADD1">
+                      <block type="variables_get" id="84ZcVdJh9/MAt1xUQHM!">
+                        <field name="VAR" id="qpK?A^Lk$~,Ug@Zp.kn%">count</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="lcd_i2c_set_cursor" id="*;SQ;rA*W_of16d~Q^v$">
+                    <value name="COL">
+                      <block type="math_number" id="6L$3F?$]9ph(L3/4h1-g">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                    <value name="ROW">
+                      <block type="math_number" id="AT{n1=E8}oB;$1ey`!~_">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="lcd_i2c_put" id=";oooDH=Ei`9S3XzTX7:9">
+                        <value name="VALUE">
+                          <block type="text" id="F%KE54YYVQua@5z=/x05">
+                            <field name="TEXT">congratulation</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="lcd_i2c_set_cursor" id="jHNbaj|WFZ7TRAg#0Q^i">
+                            <value name="COL">
+                              <block type="math_number" id="=A}t;,r`5j)ahHyQ)gs[">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                            <value name="ROW">
+                              <block type="math_number" id="Mj]_|@._.Sf1!yvztN|E">
+                                <field name="NUM">1</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="lcd_i2c_put" id="dnon9L(ijSKiKo6)}6-)">
+                                <value name="VALUE">
+                                  <block type="text_join" id="8}-t}T-pvP_VJJ?m(;(1">
+                                    <mutation items="2"></mutation>
+                                    <value name="ADD0">
+                                      <block type="text" id="uh4Z8~ce8C*G8Y!s{jym">
+                                        <field name="TEXT">New Rec:</field>
+                                      </block>
+                                    </value>
+                                    <value name="ADD1">
+                                      <block type="variables_get" id="rca?bw2R/_/dF[U8w8Yn">
+                                        <field name="VAR" id="qpK?A^Lk$~,Ug@Zp.kn%">count</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <statement name="ELSE">
+              <block type="lcd_i2c_set_cursor" id="D~0^x#H{O_0TT4K8$,`J">
+                <value name="COL">
+                  <block type="math_number" id="/w]vtScXvOf1aBh?(cnd">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="ROW">
+                  <block type="math_number" id="1Z,oC3By*`!E.!k]Fm*I">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="lcd_i2c_put" id="rk?jxrpi_eXwTbKQ)5mP">
+                    <value name="VALUE">
+                      <block type="text" id="fmwilY:_zlu7P`dcpCSz">
+                        <field name="TEXT">Fail</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </statement>
           </block>
         </next>
       </block>

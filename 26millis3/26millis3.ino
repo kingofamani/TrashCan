@@ -3,14 +3,14 @@
  *
  * https://github.com/MediaTek-Labs/BlocklyDuino-for-LinkIt
  *
- * Date: Sat, 19 Nov 2022 02:58:11 GMT
+ * Date: Sat, 19 Nov 2022 07:57:39 GMT
  */
 /*  部份程式由吉哥積木產生  */
 /*  https://sites.google.com/jes.mlc.edu.tw/ljj/linkit7697  */
 #include <SimpleTimer.h>
 
 SimpleTimer timer;
-int secs = 5;
+int secs = 10;
 
 boolean isTimeOut = false;
 
