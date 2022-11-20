@@ -3,7 +3,7 @@
  *
  * https://github.com/MediaTek-Labs/BlocklyDuino-for-LinkIt
  *
- * Date: Sat, 19 Nov 2022 08:47:17 GMT
+ * Date: Sun, 20 Nov 2022 23:42:00 GMT
  */
 /*  部份程式由吉哥積木產生  */
 /*  https://sites.google.com/jes.mlc.edu.tw/ljj/linkit7697  */
@@ -20,7 +20,7 @@ int count = 0;
 Ultrasonic ultrasonic_5_6(5, 6);
 
 void open() {
-  __myservo3.write(80);
+  __myservo3.write(130);
   delay(1000);
 }
 

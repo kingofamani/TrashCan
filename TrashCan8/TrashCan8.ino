@@ -3,7 +3,7 @@
  *
  * https://github.com/MediaTek-Labs/BlocklyDuino-for-LinkIt
  *
- * Date: Sat, 19 Nov 2022 08:56:58 GMT
+ * Date: Sun, 20 Nov 2022 23:45:25 GMT
  */
 /*  部份程式由吉哥積木產生  */
 /*  https://sites.google.com/jes.mlc.edu.tw/ljj/linkit7697  */
@@ -41,7 +41,7 @@ void clearOneMemory(int addr) {
 }
 
 void open() {
-  __myservo3.write(80);
+  __myservo3.write(130);
   delay(1000);
 }
 

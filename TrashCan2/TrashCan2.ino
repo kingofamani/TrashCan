@@ -3,7 +3,7 @@
  *
  * https://github.com/MediaTek-Labs/BlocklyDuino-for-LinkIt
  *
- * Date: Mon, 07 Nov 2022 03:53:09 GMT
+ * Date: Sun, 20 Nov 2022 23:40:53 GMT
  */
 /*  部份程式由吉哥積木產生  */
 /*  https://sites.google.com/jes.mlc.edu.tw/ljj/linkit7697  */
@@ -17,10 +17,9 @@ Servo __myservo3;
 Ultrasonic ultrasonic_5_6(5, 6);
 
 void openAndClose() {
-  digitalWrite(11, LOW);
   digitalWrite(12, HIGH);
   digitalWrite(13, LOW);
-  __myservo3.write(80);
+  __myservo3.write(130);
   delay(3000);
   digitalWrite(11, HIGH);
   digitalWrite(12, LOW);
@@ -37,9 +36,9 @@ void setup()
   __myservo3.attach(3);
   __myservo3.write(0);
   delay(1000);
-  pinMode(11, OUTPUT);
   pinMode(12, OUTPUT);
   pinMode(13, OUTPUT);
+  pinMode(11, OUTPUT);
 }
 
 
@@ -55,4 +54,6 @@ void loop()
 
     irrecv.resume();
   }
+digitalWrite(11, LOW);
+
 }
